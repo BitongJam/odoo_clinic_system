@@ -1,0 +1,53 @@
+<odoo>
+    <!-- Form view for Clinic Doctor -->
+    <record id="view_clinic_doctor_form" model="ir.ui.view">
+        <field name="name">clinic.doctor.form</field>
+        <field name="model">clinic.doctor</field>
+        <field name="arch" type="xml">
+            <form string="Clinic Doctor">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="partner_id" string="Related Partner" readonly="1" attrs="{'invisible':[('partner_id','=',False)]}"/>
+                        <field name="license_number"/>
+                        <field name="specialization"/>
+                        <field name="years_of_experience"/>
+                        <field name="availability"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree view for Clinic Doctor -->
+    <record id="view_clinic_doctor_tree" model="ir.ui.view">
+        <field name="name">clinic.doctor.tree</field>
+        <field name="model">clinic.doctor</field>
+        <field name="arch" type="xml">
+            <tree string="Clinic Doctor">
+                <field name="partner_id" readonly="1"/>
+                <field name="name"/>
+                <field name="license_number"/>
+                <field name="specialization"/>
+                <field name="years_of_experience"/>
+                <field name="availability"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Action for Clinic Doctor -->
+    <record id="action_clinic_doctor" model="ir.actions.act_window">
+        <field name="name">Clinic Doctor</field>
+        <field name="res_model">clinic.doctor</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a new doctor.
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu Item for Clinic Doctor -->
+    <menuitem id="menu_clinic_doctor" name="Doctors" parent="clinic_system.menu_clinic_management"
+              action="action_clinic_doctor"/>
+</odoo>

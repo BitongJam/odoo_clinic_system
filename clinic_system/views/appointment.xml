@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+   <record id="view_clinic_appointment_view_form" model="ir.ui.view">
+    <field name="name">clinic.appointment.view.form</field>
+    <field name="model">clinic.appointment</field>
+    <field name="arch" type="xml">
+        <form string="">
+            <sheet>
+                <div class="oe_title mb24">
+                    <field class="text-break" name="name" default_focus="1" />
+                </div>
+                <group>
+                   
+                </group>
+            </sheet>
+        </form>
+    </field>
+   </record>
+
+    <record id="clinic_appointment_view_tree" model="ir.ui.view">
+        <field name="name">clinic.appointment.view.tree</field>
+        <field name="model">clinic.appointment</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="patient_id" />
+                <field name="appointment_date" />
+                <field name="status" />
+
+            </tree>
+        </field>
+    </record>
+
+   <!-- Action for Clinic Appointment -->
+   <record id="action_clinic_appointment" model="ir.actions.act_window">
+        <field name="name">Appointment</field>
+        <field name="res_model">clinic.appointment</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu Item for Clinic Appoinment -->
+    <menuitem id="menu_clinic_appointment" name="Appointmnet" parent="menu_clinic_management"
+        action="action_clinic_appointment" />
+</odoo>

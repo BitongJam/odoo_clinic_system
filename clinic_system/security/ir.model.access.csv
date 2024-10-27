@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_clinic_patient,access.clinic.patient,model_clinic_patient,,1,0,0,0
+access_clinic_patient_manage,access.clinic.patient.manage,model_clinic_patient,clinic_system.group_manage_patient,1,1,1,1
+access_clinic_medical_history,access.clinic.medical.history,model_clinic_medical_history,,1,0,0,0
+access_clinic_medical_history_man,access.clinic.medical.history.man,model_clinic_medical_history,clinic_system.group_manage_patient,1,1,1,1
+access_clinic_appointment,access.clinic.appointment,model_clinic_appointment,,1,0,0,0
+access_clinic_appointment_manage,access.clinic.appointment.manage,model_clinic_appointment,clinic_system.group_manage_patient,1,1,1,1
+access_clinic_doctor,access.clinic.doctor,model_clinic_doctor,,1,0,0,0
+access_clinic_doctor_manage,access.clinic.doctor.manage,model_clinic_doctor,clinic_system.group_manage_doctor,1,1,1,1
+
+

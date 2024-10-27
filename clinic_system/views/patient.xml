@@ -1,0 +1,119 @@
+<odoo>
+    <!-- Clinic Patient Form View -->
+    <record id="view_clinic_patient_form" model="ir.ui.view">
+        <field name="name">clinic.patient.form</field>
+        <field name="model">clinic.patient</field>
+        <field name="arch" type="xml">
+            <form string="Clinic Patient">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <field name="active" widget="statusbar" />
+                    </div>
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="date_of_birth" />
+                            <field name="gender" />
+                            <field name="partner_id" string="Related Partner" readonly="1"></field>
+                        </group>
+                        <group>
+                            <field name="photo" widget="image" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Contact Information">
+                            <group>
+                                    <div class="o_address_format">
+                                    <field name="street" placeholder="Street..." class="o_address_street" />
+                                    <field name="street2" placeholder="Street 2..." class="o_address_street" />
+                                    <field name="city" placeholder="City" class="o_address_city" />
+                                    <field name="state_id" class="o_address_state" placeholder="State" options="{'no_open': True, 'no_quick_create': True}" />
+                                    <field name="zip" placeholder="ZIP" class="o_address_zip" />
+                                    <div name="partner_address_country" class="d-flex justify-content-between">
+                                        <field name="country_id" placeholder="Country" class="o_address_country" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"/>
+                                    </div>
+                                </div>
+                                <field name="phone" />
+                                <field name="email" />
+                            </group>
+                        </page>
+                        <page string="Medical Information">
+                            <group>
+                                <field name="medical_history" />
+                                <field name="allergies" />
+                                <field name="medications" />
+                            </group>
+                        </page>
+                        <page string="Dental Information">
+                            <group>
+                                <field name="last_dental_visit" />
+                                <field name="preferred_dentist" />
+                                <field name="dental_notes" />
+                            </group>
+                        </page>
+                        <page string="Emergency Contact">
+                            <group>
+                                <field name="emergency_contact" />
+                                <field name="emergency_phone" />
+                            </group>
+                        </page>
+                        <page string="Clinic Medical History">
+                            <field name="medical_history_ids">
+                                <tree>
+                                    <field name="appointment_date" />
+                                    <field name="medical_condition" />
+                                    <field name="treatment_given" />
+                                    <field name="medications_prescribed" />
+                                    <field name="notes" />
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Clinic Patient Tree/List View -->
+    <record id="view_clinic_patient_tree" model="ir.ui.view">
+        <field name="name">clinic.patient.tree</field>
+        <field name="model">clinic.patient</field>
+        <field name="arch" type="xml">
+            <tree string="Clinic Patient">
+                <field name="name" />
+                <field name="display_name" />
+                <field name="phone" />
+                <field name="email" />
+                <field name="last_dental_visit" />
+                <field name="preferred_dentist" />
+                <field name="active" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- Clinic Patient Search View -->
+    <record id="view_clinic_patient_search" model="ir.ui.view">
+        <field name="name">clinic.patient.search</field>
+        <field name="model">clinic.patient</field>
+        <field name="arch" type="xml">
+            <search string="Clinic Patient">
+                <field name="name" />
+                <field name="phone" />
+                <field name="email" />
+                <filter name="active_filter" string="Active" domain="[('active', '=', True)]" />
+            </search>
+        </field>
+    </record>
+
+    <!-- Action for Clinic Patient -->
+    <record id="action_clinic_patient" model="ir.actions.act_window">
+        <field name="name">Patients</field>
+        <field name="res_model">clinic.patient</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu Item for Clinic Patient -->
+    <menuitem id="menu_clinic_management" name="Clinic Management" />
+    <menuitem id="menu_clinic_patients" name="Patients" parent="menu_clinic_management"
+        action="action_clinic_patient" />
+</odoo>
